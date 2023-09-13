@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" class="form-control" name="service_location" id="autocomplete_search" placeholder="Enter a location"><br>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGA8Qic326JUGpSKGHC7zA3VInj8C0DMY&libraries=places&callback=initAutocomplete" async defer></script>
+
+<script>
+  let autocomplete;
+
+  function initAutocomplete() {
+
+    autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('autocomplete_search'),
+      {
+        types: ['establishment'],
+        componentRestrictions: { country: "us" },
+        fields: ["address_components", "geometry", "icon", "name"],
+        strictBounds: false,
+      }
+    )
+
+
+    // var autocomplete = new google.maps.places.Autocomplete(input);
+    //
+    // autocomplete.addListener('place_changed', function () {
+    //
+    //   var place = autocomplete.getPlace();
+    //
+    //   // place variable will have all the information you are looking for.
+    //
+    //   console.log(place.geometry['location'].lat())
+    //   console.log(place.geometry['location'].lng())
+    //
+    // });
+
+  }
+
+</script>
+
+</body>
+</html>

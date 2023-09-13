@@ -1,0 +1,134 @@
+/*
+ Theme Name:     Divi Child
+ Theme URI:      https://www.elegantthemes.com/gallery/divi/
+ Description:    Divi Child Theme
+ Author:         Elegant Themes
+ Author URI:     https://www.elegantthemes.com
+ Template:       Divi
+ Version:        1.0.0
+*/
+
+
+/* =Theme customization starts here
+------------------------------------------------------- */
+
+.tools {
+  /*background-color: #ffdb00;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 1em;*/
+  display: flex;
+  width: 100%;
+}
+
+.tools h1 {
+  flex-grow: 3;
+}
+
+.tools button {
+  flex-grow: 1;
+}
+
+.tools h4 {
+  width: 200px;
+}
+
+.form-group {
+  margin-bottom: 1em;
+}
+
+.form-group fieldset legend {
+  font-size: 15px;
+}
+
+.form-group input[type="checkbox"] {
+  display: inherit !important;
+  width: auto !important;
+}
+
+/*#mepr-account-nav .mepr-nav-item a {
+  color: #ffdb00;
+}*/
+
+#mepr-account-nav .mepr-nav-item.--active a, #mepr-account-nav .mepr-nav-item.mepr-active-nav-tab a {
+  background: #ffdb00;
+  color: black;
+  font-weight: 800;
+}
+
+.btn-primary,
+.btn-danger,
+.close {
+  background-color: #ffdb00 !important;
+  color: black !important;
+  /*border: 2px solid black !important;*/
+  font-weight: 700 !important;
+}
+
+
+/* car advert listing */
+.car-advert-container {
+  padding: 2em;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* car advert listing */
+
+/* parts*/
+
+.tools-parts {
+  background-color: #ffdb00;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 1em;
+  display: flex;
+}
+
+.tools-parts form {
+  display: flex;
+  width: 100%;
+}
+
+.tools-parts form > div {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.tools-parts h4 {
+  width: 200px;
+}
+
+.tools-parts form > div:last-child {
+  padding-right: 0;
+}
+
+.tools-parts .btn {
+  width: 100%;
+}
+.btn-warning-custom {
+  background: #ffdb00 !important;
+  color: black !important;
+}
+
+.form-control.error,
+.form-select.error {
+  border-color: #dc3545 !important;
+  padding-right: calc(1.5em + 0.75rem) !important;
+  /*background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e) !important;*/
+  background-repeat: no-repeat !important;
+  background-position: right calc(0.375em + 0.1875rem) center !important;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) !important;
+}
+
+.form-select.error {
+  background-image: none;
+}
+
+label.error {
+  width: 100% !important;
+  font-size: 13px !important;
+  color: #dc3545 !important;
+}
