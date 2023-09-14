@@ -1,27 +1,141 @@
-<link href="<?= get_home_url() . '/wp-content/themes/divi-child/tools/bootstrap-5.1.1-dist/css/bootstrap.min.css'; ?>" rel="stylesheet">
-<link href="<?= get_home_url() . '/wp-content/themes/divi-child/tools/datatables/datatables.min.css'; ?>" rel="stylesheet">
-<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<link href="<?= get_home_url() . '/wp-content/themes/divi-child/style.css?random='.uniqid(); ?>" rel="stylesheet">
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />-->
+<!--<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
+<!--<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>-->
+<!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />-->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css"/>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
+
+
+<style>
+  .d-flex {
+    display: flex
+  }
+
+  .justify-content-between {
+    justify-content: space-between
+  }
+
+  .align-item-center {
+    align-items: center
+  }
+
+  #datatable_dealerships_wrapper .col-sm-6:nth-child(2) {
+    display: flex;
+    justify-content: end;
+  }
+
+  select[name='datatable_dealerships_length'] {
+    padding: 0;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  #datatable_dealerships_filter input[type='search'] {
+    font-size: 15px;
+  }
+
+  .button_delete_dealerships,
+  .exit-modal {
+    background: red !important;
+    width: 150px;
+    font-size: 15px !important;
+    padding: 10px !important;
+    border-radius: 6px !important;
+  }
+
+  .exit-modal {
+    background: #fff !important;
+    border-color: #ccc !important;
+    outline: 0;
+    color: black !important;
+  }
+
+  .modal-title {
+    text-align: center;
+    font-size: 24px;
+    color: #000;
+  }
+
+  .modal-header {
+    padding: 20px 0 5px 0 !important;
+  }
+
+  .modal-body {
+    text-align: center !important;
+    font-size: 22px !important;
+    margin-top: 25px !important;
+  }
+
+  .d-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 10px;
+  }
+
+  .bootgrid-header .search, .bootgrid-footer .search {
+    width: auto !important;
+  }
+
+  .bootgrid-header .search, .bootgrid-footer .search {
+    padding-right: 0 !important;
+  }
+
+  .actions.btn-group {
+    display: none
+  }
+
+  .bootgrid-header .search, .bootgrid-footer .search {
+    margin: 0 !important;
+  }
+
+  .col-sm-12.actionBar {
+    padding-right: 0 !important;
+  }
+
+  .text-muted {
+    color: rgb(108,117,125);
+  }
+  .flex-column {
+    flex-direction: column;
+  }
+
+  .text-black {color: #000 !important;}
+
+  .bootgrid-table tbody tr td {
+    vertical-align: middle !important;
+  }
+</style>
 
 <div class="d-flex justify-content-between" style="align-items: center">
-  <h3>Dealership/Showroom Management System</h3>
-  <a class="btn btn-small btn-primary px-5 mb-0 align-item-center" style="align-self: center" href="/account/?action=dealerships&add_new=true"><span>New</span></a>
+  <div class="d-flex flex-column">
+    <h3>Dealership/Showroom Management System</h3>
+    <p class="text-muted" style="width: 60%;font-size: 15px">Easily track and manage the available products in the showroom, including
+      their quantities, prices, and specifications. Keep real-time updates on stock levels and reorder points.</p>
+  </div>
+  <a class="btn btn-small btn-default px-5 mb-0 align-item-center text-black" style="align-self: center;padding: 10px 20px"
+     href="/account/?action=dealerships&add_new=true"><span>New</span></a>
 </div>
 
-<br />
+<br/>
 
 <div class="table-listing">
   <table class="table table-striped table-sm table-bordered align-middle" id="datatable_dealerships">
     <thead>
     <tr class="table-header">
-      <td class="text-center">Id</td>
-      <td class="text-center">Location</td>
-      <td class="text-center">Distance</td>
-      <td class="text-center">Showroom</td>
-      <td class="text-center">Manufacturer</td>
-      <td class="text-center">Garage</td>
-      <td class="text-center">Other</td>
-      <td class="text-center">Actions</td>
+      <th class="text-center" data-column-id="ID" data-type="numeric">Id</th>
+      <th class="text-center" data-column-id="service_location">Location</th>
+      <th class="text-center" data-column-id="service_distance">Distance</th>
+      <th class="text-center" data-column-id="service_showrooms">Showroom</th>
+      <th class="text-center" data-column-id="service_part_manufacturer">Manufacturer</th>
+      <th class="text-center" data-column-id="service_specialist_garage">Garage</th>
+      <th class="text-center" data-column-id="service_other_services">Other</th>
+      <th class="text-center" data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
     </tr>
     </thead>
     <tbody></tbody>
@@ -43,8 +157,8 @@
           <div class="row g-3">
             <div class="col-md-12">
               <label for="serviceLocation" class="form-label">Location: <strong class="text-danger">*</strong></label>
-<!--              <input type="text" class="form-control" name="service_location" id="serviceLocation">-->
-              <input type="text" id="SearchServiceLocation" placeholder="Enter a location"  /><br>
+              <!--              <input type="text" class="form-control" name="service_location" id="serviceLocation">-->
+              <input type="text" id="SearchServiceLocation" placeholder="Enter a location"/><br>
             </div>
 
             <div class="col-md-12">
@@ -54,7 +168,8 @@
 
             <div class="col-md-6">
               <label for="serviceShowRoom" class="form-label">Show rooms: <strong class="text-danger">*</strong></label>
-              <select class="form-select" aria-label="Default select example" id="serviceShowRoom" name="service_showrooms">
+              <select class="form-select" aria-label="Default select example" id="serviceShowRoom"
+                      name="service_showrooms">
                 <option value="">-- Select one --</option>
                 <option value="Show rooms 1">Show rooms 1</option>
                 <option value="Show rooms 2">Show rooms 2</option>
@@ -63,8 +178,10 @@
             </div>
 
             <div class="col-md-6">
-              <label for="servicePartManufacturer" class="form-label">Part Manufacturer: <strong class="text-danger">*</strong></label>
-              <select class="form-select" aria-label="Default select example" name="service_part_manufacturer" id="servicePartManufacturer">
+              <label for="servicePartManufacturer" class="form-label">Part Manufacturer: <strong
+                  class="text-danger">*</strong></label>
+              <select class="form-select" aria-label="Default select example" name="service_part_manufacturer"
+                      id="servicePartManufacturer">
                 <option value="">-- Select one --</option>
                 <option value="Audio">Audio</option>
                 <option value="Brakes">Brakes</option>
@@ -80,8 +197,10 @@
             </div>
 
             <div class="col-md-12">
-              <label for="serviceSpecialistGarage" class="form-label">Specialist Garage: <strong class="text-danger">*</strong></label>
-              <select class="form-select" aria-label="Default select example" name="service_specialist_garage" id="serviceSpecialistGarage">
+              <label for="serviceSpecialistGarage" class="form-label">Specialist Garage: <strong
+                  class="text-danger">*</strong></label>
+              <select class="form-select" aria-label="Default select example" name="service_specialist_garage"
+                      id="serviceSpecialistGarage">
                 <option value="">-- Select one --</option>
                 <option value="Audio">Audio</option>
                 <option value="Bodywork">Bodywork</option>
@@ -100,8 +219,10 @@
             </div>
 
             <div class="col-md-12">
-              <label for="serviceOtherServices" class="form-label">Other Services: <strong class="text-danger">*</strong></label>
-              <select class="form-select" aria-label="Default select example" name="service_other_services" id="serviceOtherServices">
+              <label for="serviceOtherServices" class="form-label">Other Services: <strong
+                  class="text-danger">*</strong></label>
+              <select class="form-select" aria-label="Default select example" name="service_other_services"
+                      id="serviceOtherServices">
                 <option value="">-- Select one --</option>
                 <option value="Car cleaning">Car cleaning</option>
                 <option value="Health check">Health check</option>
@@ -111,8 +232,8 @@
               </select>
             </div>
 
-            <input type="hidden" name="user_id" value="<?= get_current_user_id(); ?>" />
-            <input type="hidden" name="post_id" value="" />
+            <input type="hidden" name="user_id" value="<?= get_current_user_id(); ?>"/>
+            <input type="hidden" name="post_id" value=""/>
 
             <div class="col-12">
               <button type="submit" class="btn btn-primary btn-edit">Submit</button>
@@ -138,39 +259,73 @@
       <div class="modal-body">
         <p>Do you want to delete this item?</p>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="text-align: center">
         <button type="button" class="btn btn-primary button_delete_dealerships">Yes</button>
-        <button type="button" class="btn btn-default close">No</button>
+        <button type="button" class="btn btn-default exit-modal">No</button>
       </div>
     </div>
   </div>
 </div>
 
-<script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/utils.js?random='.uniqid(); ?>"></script>
-<script src="<?= get_home_url() . '/wp-content/themes/divi-child/tools/bootstrap-5.1.1-dist/js/bootstrap.min.js'; ?>"></script>
-<script src="<?= get_home_url() . '/wp-content/themes/divi-child/tools/datatables/datatables.min.js'; ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" ></script>
-<script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/notifications.js?random='.uniqid(); ?>"></script>
-<script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/dealerships.js?random='.uniqid(); ?>"></script>
+<script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/utils.js?random=' . uniqid(); ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/notifications.js?random=' . uniqid(); ?>"></script>
+<script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/dealerships.js?random=' . uniqid(); ?>"></script>
 <script>
-  const added = "<?= isset($_SESSION['added']) ?>";
-  const updated = "<?= isset($_SESSION['updated']) ?>";
+  $(document).ready(function () {
+    let post_id = 0;
 
-  if (added) {
-    $.notification(
-      ["You successfully added a new record."],
-      { position: ['top', 'right'],messageType: 'success',}
-    )
-  }
+    const added = "<?= isset($_SESSION['added']) ?>";
+    const updated = "<?= isset($_SESSION['updated']) ?>";
 
-  if (updated) {
-    $.notification(
-      ["You successfully updated the existing record."],
-      { position: ['top', 'right'],messageType: 'success',}
-    )
-  }
+    var dealershipable = $('#datatable_dealerships').bootgrid({
+      ajax: true,
+      rowSelect: true,
+      post: function () {
+        return {};
+      },
+      url: '../wp-admin/admin-ajax.php?action=fetch_dealerships&user_id=' + $('input[name="user_id"]').val(),
+      formatters: {
+        "commands": function (column, row) {
+          return `<div class="d-grid gap-2 mb-2">
+                       <a href="/account/?action=dealerships&edit_dealership=true&post_id=${row.ID}" class="btn btn-default text-black" data-id="${row.ID}"  data-process="services">
+                        Edit
+                       </a>
+                      <a href='javascript:void(0)' type="button" class="btn btn-default text-black delete_show_modal" data-id="${row.ID}" >
+                        Delete
+                      </a>
+                    </div>`;
+        }
+      }
+    });
+
+    $(document).on("loaded.rs.jquery.bootgrid", function () {
+      dealershipable.find(".delete_show_modal").on("click", function (event) {
+        let el = $(this);
+        $('.delete-dealerships-modal').modal('show');
+        post_id = el.attr('data-id');
+        console.log('post_id', post_id)
+        $('.delete-dealerships-modal .modal-body').html(`<p>Do you really want to delete item?</p>`);
+        return false; /* always return false so that when clicked it will not scroll up */
+      })
+    })
+
+    if (added) {
+      $.notification(
+        ["You successfully added a new record."],
+        {position: ['top', 'right'], messageType: 'success',}
+      )
+    }
+
+    if (updated) {
+      $.notification(
+        ["You successfully updated the existing record."],
+        {position: ['top', 'right'], messageType: 'success',}
+      )
+    }
+  })
 </script>
 <?php
-  if (isset($_SESSION['added'])) unset($_SESSION['added']);
-  if (isset($_SESSION['updated'])) unset($_SESSION['updated']);
+if (isset($_SESSION['added'])) unset($_SESSION['added']);
+if (isset($_SESSION['updated'])) unset($_SESSION['updated']);
 ?>

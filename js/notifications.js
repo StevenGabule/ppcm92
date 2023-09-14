@@ -59,7 +59,7 @@ $("<style>")
 
 .notifications-box-icon i{
     font-style: normal;
-    font-size: 1.5rem;
+     font-size: 16px !important;
 }
 
 .notifications-box-two-animate{
@@ -92,7 +92,7 @@ $("<style>")
 }
 
 .notifications-box-msg span{
-    font-size: 0.9rem;
+   font-size: 16px !important;
     white-space: normal;
 }
 
@@ -104,7 +104,7 @@ $("<style>")
 }
 
 .notifications-box-close i{
-    font-size: 1rem;
+    font-size: 16px !important;
     cursor: pointer;
     font-weight: bold;
     font-style: normal;

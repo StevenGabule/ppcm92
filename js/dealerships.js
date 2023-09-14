@@ -25,7 +25,7 @@ $(document).on('submit', '#createNewDealershipFrm', function (e) {
   }
 })
 
-$(document).on('click', '.close', function () {
+$(document).on('click', '.exit-modal', function () {
   $('#createNewDealershipFrm')[0].reset();
   $('.modal').modal('hide');
   return false;
@@ -51,6 +51,7 @@ $(document).on('click', '#btn_add_show', function () {
 
 // ** MODAL CONFIRMATION FOR DELETE
 $(document).on('click', '.delete_show_modal', function () {
+  alert('asd');
   let el = $(this);
   $('.delete-dealerships-modal').modal('show');
   post_id = el.attr('data-id');
@@ -139,7 +140,7 @@ function load_data_dealerships() {
 
 
 $(document).ready(function () {
-  load_data_dealerships();
+  // load_data_dealerships();
 
   $("#createNewDealershipFrm").validate({
     rules: {
