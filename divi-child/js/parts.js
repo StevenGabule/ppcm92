@@ -99,19 +99,6 @@ $(document).on('click', '.edit_show_modal', function () {
 });
 
 
-/* bind - delete */
-$(document).on('click', '.button_delete_parts', function () {
-  const form_data = new FormData();
-  form_data.append('action', 'delete_parts');
-  form_data.append('post_id', post_id);
-  let ajax = new Ajax('../wp-admin/admin-ajax.php', form_data);
-  ajax.run();
-
-  $('.delete-parts-modal').modal('hide');
-  partsDataTable.ajax.reload();
-  return false;  /* always return false so that when clicked it will not scroll up */
-});
-
 function load_data_parts() {
   partsDataTable = $('#datatable_parts').DataTable(
     {
@@ -155,7 +142,7 @@ function load_data_parts() {
 }
 
 $(document).ready(function () {
-  load_data_parts();
+  // load_data_parts();
 
   $("#createNewPartFrm").validate({
     rules: {

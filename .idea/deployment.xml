@@ -8,10 +8,17 @@
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/tut" />
             <excludedPath local="true" path="$PROJECT_DIR$/wp-admin" />
-            <excludedPath local="true" path="$PROJECT_DIR$/css" />
             <excludedPath local="true" path="$PROJECT_DIR$/wp-content" />
+            <excludedPath local="true" path="$PROJECT_DIR$/tut" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/core" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/common" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/cloud" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/css" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/et-pagebuilder" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/epanel" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/lang" />
+            <excludedPath local="true" path="$PROJECT_DIR$/Divi/psd" />
           </excludedPaths>
         </serverdata>
       </paths>

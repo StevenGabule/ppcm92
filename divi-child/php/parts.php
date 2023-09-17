@@ -3,6 +3,11 @@
 function fetch_parts()
 {
     global $wpdb;
+    $query = '';
+    $data = array();
+    $records_per_page = 10;
+    $start_from = 0;
+    $current_page_number = 0;
 
     $currentUserId = $_REQUEST['user_id'];
     $table_name = 'qth_posts';
@@ -17,19 +22,72 @@ function fetch_parts()
               (SELECT meta_value FROM $joined_table WHERE meta_key='part_audio' AND post_id=ID) AS part_audio,
               (SELECT meta_value FROM $joined_table WHERE meta_key='part_body_work' AND post_id=ID) AS part_body_work";
 
-    $total_rows = $wpdb->get_results("SELECT $columns FROM $table_name WHERE post_author='" . $currentUserId . "' AND post_type='part'");
-
-    if (isset($_REQUEST['start'])) {
-        $results = $wpdb->get_results("SELECT $columns FROM $table_name WHERE post_author='" . $currentUserId . "' AND post_type='part' ORDER BY ID DESC LIMIT " . $_REQUEST['start'] . "," . $_REQUEST['length']);
-    } else {
-        $results = $wpdb->get_results("SELECT $columns FROM $table_name WHERE post_author='" . $currentUserId . "' AND post_type='part' ORDER BY ID DESC ");
+    if(isset($_POST["rowCount"])) {
+      $records_per_page = $_POST["rowCount"];
     }
 
-    /* create responses for the datatable */
-    $response['data'] = !empty($results) ? $results : [];
-    $response['recordsTotal'] = !empty($total_rows) ? count($total_rows) : 0;
-    $response['recordsFiltered'] = !empty($total_rows) ? count($total_rows) : 0;
-    wp_send_json($response);
+    if(isset($_POST["current"])) {
+      $current_page_number = $_POST["current"];
+    } else {
+      $current_page_number = 1;
+    }
+
+
+    $start_from = ($current_page_number - 1) * $records_per_page;
+
+    $sql = "SELECT $columns FROM $table_name WHERE (post_author='" . $currentUserId . "' AND post_type='part') ";
+
+    if(!empty($_POST["searchPhrase"])) {
+      $sql .= ' AND ((SELECT meta_value FROM '.$joined_table.' WHERE meta_key=\'part_name\' AND post_id=ID) LIKE "%'.$_POST["searchPhrase"].'%" ';
+      $sql .= 'OR (SELECT meta_value FROM '.$joined_table.' WHERE meta_key=\'part_model\' AND post_id=ID) LIKE "%'.$_POST["searchPhrase"].'%" ';
+      $sql .= 'OR (SELECT meta_value FROM '.$joined_table.' WHERE meta_key=\'part_related_car\' AND post_id=ID) LIKE "%'.$_POST["searchPhrase"].'%" ';
+      $sql .= 'OR (SELECT meta_value FROM '.$joined_table.' WHERE meta_key=\'part_audio\' AND post_id=ID) LIKE "%'.$_POST["searchPhrase"].'%"  ';
+      $sql .= 'OR (SELECT meta_value FROM '.$joined_table.' WHERE meta_key=\'part_body_work\' AND post_id=ID) LIKE "%'.$_POST["searchPhrase"].'%")  ';
+    }
+
+    $total_rows = $wpdb->get_results("SELECT $columns FROM $table_name WHERE post_author='" . $currentUserId . "' AND post_type='part'");
+    $order_by = '';
+
+    if(isset($_POST["sort"]) && is_array($_POST["sort"])) {
+      foreach($_POST["sort"] as $key => $value) {
+        $order_by .= ' (SELECT meta_value FROM '.$joined_table.' WHERE meta_key="'.$key.'" AND post_id=ID) '.$value.', ';
+      }
+    } else {
+      $sql .= 'ORDER BY ID DESC ';
+    }
+
+    if($order_by != '') {
+      $sql .= ' ORDER BY ' . substr($order_by, 0, -2);
+    }
+
+    if($records_per_page != -1) {
+      $sql .= " LIMIT " . $start_from . ", " . $records_per_page;
+    }
+
+    $results = $wpdb->get_results($sql);
+    $total_rows = $wpdb->get_results("SELECT $columns FROM $table_name WHERE post_author='" . $currentUserId . "' AND post_type='part'");
+
+    $output = [
+      'current'  => intval($_POST["current"]),
+      'rowCount' => 10,
+      'total' =>  !empty($total_rows) ? count($total_rows) : 0,
+      'rows' => !empty($results) ? $results : [],
+      'sql' => $sql
+    ];
+
+    wp_send_json($output);
+
+//  if (isset($_REQUEST['start'])) {
+//        $results = $wpdb->get_results("SELECT $columns FROM $table_name WHERE post_author='" . $currentUserId . "' AND post_type='part' ORDER BY ID DESC LIMIT " . $_REQUEST['start'] . "," . $_REQUEST['length']);
+//    } else {
+//        $results = $wpdb->get_results("SELECT $columns FROM $table_name WHERE post_author='" . $currentUserId . "' AND post_type='part' ORDER BY ID DESC ");
+//    }
+//
+//    /* create responses for the datatable */
+//    $response['data'] = !empty($results) ? $results : [];
+//    $response['recordsTotal'] = !empty($total_rows) ? count($total_rows) : 0;
+//    $response['recordsFiltered'] = !empty($total_rows) ? count($total_rows) : 0;
+//    wp_send_json($response);
     die(); // to enclose 0 return;
 }
 

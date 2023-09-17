@@ -9,107 +9,10 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
+<link href="<?php echo get_home_url() . '/wp-content/themes/divi-child/style.css?random='.uniqid(); ?>" rel="stylesheet">
 
 
 <style>
-  .d-flex {
-    display: flex
-  }
-
-  .justify-content-between {
-    justify-content: space-between
-  }
-
-  .align-item-center {
-    align-items: center
-  }
-
-  #datatable_dealerships_wrapper .col-sm-6:nth-child(2) {
-    display: flex;
-    justify-content: end;
-  }
-
-  select[name='datatable_dealerships_length'] {
-    padding: 0;
-    text-align: center;
-    font-size: 15px;
-  }
-
-  #datatable_dealerships_filter input[type='search'] {
-    font-size: 15px;
-  }
-
-  .button_delete_dealerships,
-  .exit-modal {
-    background: red !important;
-    width: 150px;
-    font-size: 15px !important;
-    padding: 10px !important;
-    border-radius: 6px !important;
-  }
-
-  .exit-modal {
-    background: #fff !important;
-    border-color: #ccc !important;
-    outline: 0;
-    color: black !important;
-  }
-
-  .modal-title {
-    text-align: center;
-    font-size: 24px;
-    color: #000;
-  }
-
-  .modal-header {
-    padding: 20px 0 5px 0 !important;
-  }
-
-  .modal-body {
-    text-align: center !important;
-    font-size: 22px !important;
-    margin-top: 25px !important;
-  }
-
-  .d-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 10px;
-  }
-
-  .bootgrid-header .search, .bootgrid-footer .search {
-    width: auto !important;
-  }
-
-  .bootgrid-header .search, .bootgrid-footer .search {
-    padding-right: 0 !important;
-  }
-
-  .actions.btn-group {
-    display: none
-  }
-
-  .bootgrid-header .search, .bootgrid-footer .search {
-    margin: 0 !important;
-  }
-
-  .col-sm-12.actionBar {
-    padding-right: 0 !important;
-  }
-
-  .text-muted {
-    color: rgb(108,117,125);
-  }
-  .flex-column {
-    flex-direction: column;
-  }
-
-  .text-black {color: #000 !important;}
-
-  .bootgrid-table tbody tr td {
-    vertical-align: middle !important;
-  }
 </style>
 
 <div class="d-flex justify-content-between" style="align-items: center">
@@ -258,6 +161,7 @@
       </div>
       <div class="modal-body">
         <p>Do you want to delete this item?</p>
+        <input type="hidden" name="delete_post_id">
       </div>
       <div class="modal-footer" style="text-align: center">
         <button type="button" class="btn btn-primary button_delete_dealerships">Yes</button>
@@ -304,7 +208,7 @@
         let el = $(this);
         $('.delete-dealerships-modal').modal('show');
         post_id = el.attr('data-id');
-        console.log('post_id', post_id)
+        $("input[name='delete_post_id']").val(post_id)
         $('.delete-dealerships-modal .modal-body').html(`<p>Do you really want to delete item?</p>`);
         return false; /* always return false so that when clicked it will not scroll up */
       })

@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="93b69097-b446-404d-9217-825973126776" name="ppcm92" url="http://ftp.ppcm92.sg-host.com">
-        <fileTransfer rootFolder="/ppcm92.sg-host.com/public_html/wp-content/themes/divi-child" host="ftp.ppcm92.sg-host.com" port="21">
+        <fileTransfer rootFolder="/ppcm92.sg-host.com/public_html/wp-content/themes" host="ftp.ppcm92.sg-host.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" showHiddenFiles="true" />
           </advancedOptions>

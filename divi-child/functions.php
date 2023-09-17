@@ -13,7 +13,7 @@ require_once($child_theme . '/php/parts.php');
 function theme_styles_()
 {
   /* divi child css */
-//  wp_enqueue_style('parent-style', get_theme_file_uri('./style.css'));
+  wp_enqueue_style('parent-style', get_theme_file_uri('./style.css'));
 //  /* divi child css */
 //
 //  /* datatables css */
@@ -23,7 +23,7 @@ function theme_styles_()
   /* datatables css */
 }
 
-//add_action('wp_enqueue_scripts', 'theme_styles_');
+add_action('wp_enqueue_scripts', 'theme_styles_');
 /* include styles and scripts */
 
 //function add_google_maps_script()
@@ -46,7 +46,7 @@ function start_session() {
 add_action('init', 'start_session', 1);
 
 
-/* create the custom tabs for member press */
+/* create the custom tabs for member presss */
 function mepr_add_some_tabs($user)
 {
   $cars_active = (isset($_GET['action']) && $_GET['action'] == 'cars') ? 'mepr-active-nav-tab' : '';

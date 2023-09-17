@@ -132,3 +132,105 @@ label.error {
   font-size: 13px !important;
   color: #dc3545 !important;
 }
+
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between
+}
+
+.align-item-center {
+  align-items: center
+}
+
+#datatable_dealerships_wrapper .col-sm-6:nth-child(2) {
+  display: flex;
+  justify-content: end;
+}
+
+select[name='datatable_dealerships_length'] {
+  padding: 0;
+  text-align: center;
+  font-size: 15px;
+}
+
+#datatable_dealerships_filter input[type='search'] {
+  font-size: 15px;
+}
+
+.button_delete_parts,
+.button_delete_dealerships,
+.exit-modal {
+  background: red !important;
+  width: 150px;
+  font-size: 15px !important;
+  padding: 10px !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+}
+
+.exit-modal {
+  background: #fff !important;
+  border-color: #ccc !important;
+  outline: 0;
+  color: black !important;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 24px;
+  color: #000;
+}
+
+.modal-header {
+  padding: 20px 0 5px 0 !important;
+}
+
+.modal-body {
+  text-align: center !important;
+  font-size: 22px !important;
+  margin-top: 25px !important;
+}
+
+.d-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 10px;
+}
+
+.bootgrid-header .search, .bootgrid-footer .search {
+  width: auto !important;
+}
+
+.bootgrid-header .search, .bootgrid-footer .search {
+  padding-right: 0 !important;
+}
+
+.actions.btn-group {
+  display: none
+}
+
+.bootgrid-header .search, .bootgrid-footer .search {
+  margin: 0 !important;
+}
+
+.col-sm-12.actionBar {
+  padding-right: 0 !important;
+}
+
+.text-muted {
+  color: rgb(108,117,125);
+}
+.flex-column {
+  flex-direction: column;
+}
+
+.text-black {color: #000 !important;}
+
+.bootgrid-table tbody tr td {
+  vertical-align: middle !important;
+}
