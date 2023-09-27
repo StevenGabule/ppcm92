@@ -98,7 +98,7 @@ $(document).on('click', '.button_delete_dealerships', function () {
     ["You successfully remove the existing record."],
     { position: ['top', 'right'],messageType: 'success',}
   )
-  dealerShipDataTable.ajax.reload();
+  $('#datatable_dealerships').bootgrid('reload');
   post_id = '';
   return false;  /* always return false so that when clicked it will not scroll up */
 });

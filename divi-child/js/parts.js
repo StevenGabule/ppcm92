@@ -15,7 +15,7 @@ $(document).on('submit', '#createNewPartFrm', function (e) {
     let is_success = ajax.run();
     if (is_success) {
       $('#modalAdd').modal('hide');
-      partsDataTable.ajax.reload();
+      $('#datatable_parts').bootgrid('reload');
       form_body.reset();
     }
   }
@@ -100,45 +100,45 @@ $(document).on('click', '.edit_show_modal', function () {
 
 
 function load_data_parts() {
-  partsDataTable = $('#datatable_parts').DataTable(
-    {
-      'ajax': '../wp-admin/admin-ajax.php?action=fetch_parts&user_id=' + $('input[name="user_id"]').val(),
-      'responsive': true,
-      'serverSide': true,
-      'processing': true,
-      'columns': [
-        {data: 'ID', title: 'ID'},
-        {data: 'post_title', title: 'Title'},
-        {data: 'part_model', title: 'Model'},
-        {data: 'part_related_car', title: 'Related Car'},
-        {data: 'part_audio', title: 'Audio'},
-        {data: 'part_body_work', title: 'Body Work'},
-        {
-          data: 'ID',
-          title: 'Actions',
-          render: function (data, type, row, meta) {
-            return '<div class="d-grid gap-2 mb-2">' +
-              '<button ' +
-              'type="button" ' +
-              'class="btn btn-primary edit edit_show_modal" ' +
-              'data-id="' + row.ID + '" ' +
-              'data-process="services">' +
-              'Edit' +
-              '</button>' +
-              '</div>' +
-              '<div class="d-grid gap-2">' +
-              '<button ' +
-              'type="button" ' +
-              'class="btn btn-danger delete_show_modal" ' +
-              'data-id="' + row.ID + '" ' +
-              'data-title="' + row.post_title + '">' +
-              'Delete' +
-              '</button>' +
-              '</div>';
-          }
-        },
-      ]
-    });
+  // partsDataTable = $('#datatable_parts').DataTable(
+  //   {
+  //     'ajax': '../wp-admin/admin-ajax.php?action=fetch_parts&user_id=' + $('input[name="user_id"]').val(),
+  //     'responsive': true,
+  //     'serverSide': true,
+  //     'processing': true,
+  //     'columns': [
+  //       {data: 'ID', title: 'ID'},
+  //       {data: 'post_title', title: 'Title'},
+  //       {data: 'part_model', title: 'Model'},
+  //       {data: 'part_related_car', title: 'Related Car'},
+  //       {data: 'part_audio', title: 'Audio'},
+  //       {data: 'part_body_work', title: 'Body Work'},
+  //       {
+  //         data: 'ID',
+  //         title: 'Actions',
+  //         render: function (data, type, row, meta) {
+  //           return '<div class="d-grid gap-2 mb-2">' +
+  //             '<button ' +
+  //             'type="button" ' +
+  //             'class="btn btn-primary edit edit_show_modal" ' +
+  //             'data-id="' + row.ID + '" ' +
+  //             'data-process="services">' +
+  //             'Edit' +
+  //             '</button>' +
+  //             '</div>' +
+  //             '<div class="d-grid gap-2">' +
+  //             '<button ' +
+  //             'type="button" ' +
+  //             'class="btn btn-danger delete_show_modal" ' +
+  //             'data-id="' + row.ID + '" ' +
+  //             'data-title="' + row.post_title + '">' +
+  //             'Delete' +
+  //             '</button>' +
+  //             '</div>';
+  //         }
+  //       },
+  //     ]
+  //   });
 }
 
 $(document).ready(function () {

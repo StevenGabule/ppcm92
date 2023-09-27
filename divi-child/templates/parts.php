@@ -1,14 +1,35 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css"/>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
-<link href="<?= get_home_url() . '/wp-content/themes/divi-child/style.css?random=' . uniqid(); ?>" rel="stylesheet">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css"/>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.js"></script>
+  <link href="<?php echo get_home_url() . '/wp-content/themes/divi-child/style.css?random='.uniqid(); ?>" rel="stylesheet">
 
+  <style>
+    .form-control {
+      display: block !important;
+      width: 100% !important;
+      padding: 0.375rem 0.75rem !important;
+      font-size: 1rem !important;
+      font-weight: 400 !important;
+      line-height: 1.5 !important;
+      color: #212529 !important;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      appearance: none !important;
+      background-color: #fff !important;
+      background-clip: padding-box !important;
+      border: 1px solid #dee2e6 !important;
+      border-radius: var(--bs-border-radius) !important;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+    }
+  </style>
+</head>
 <div class="d-flex justify-content-between" style="align-items: center">
   <div class="d-flex flex-column">
     <h3>Parts Management System</h3>
-    <p class="text-muted" style="width: 60%;font-size: 15px">Easily track and manage the available products in the
+    <p class="text-muted" style="width: 60%;font-size: 15px"> Easily track and manage the available products in the
       showroom, including
       their quantities, prices, and specifications. Keep real-time updates on stock levels and reorder points.</p>
   </div>
@@ -44,71 +65,71 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <form action="" class="modal-content" id="createNewPartFrm">
       <div class="modal-header">
-        <h1 class="modal-title modal-title-edit fs-5" id="modalAddLabel">Add New Part</h1>
+        <h1 class="modal-title modal-title-edit fs-5" id="modalAddLabel" style="padding-left: 30px !important;">Add New Part</h1>
         <button type="button" class="close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="container">
+      <div class="modal-body" style="width: 100%">
+        <div class="container" style="width: 100%">
           <div class="row g-3">
             <div class="col-md-12">
-              <label for="partName" class="form-label">Part Name</label>
-              <input type="text" class="form-control" name="part_name" id="partName">
+              <label for="partName" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left">Part Name</label>
+              <input type="text" class="form-control" name="part_name" id="partName" style="font-size: 16px !important;">
             </div>
             <div class="col-md-6">
-              <label for="partModel" class="form-label">Part Model</label>
-              <input type="text" class="form-control" name="part_model" id="partModel">
+              <label for="partModel" class="form-label" style="  font-size: 16px !important;font-weight: bold;text-align: left;">Part Model</label>
+              <input type="text" class="form-control" name="part_model" id="partModel" style="font-size: 16px !important;">
             </div>
             <div class="col-md-6">
-              <label for="partCarRelated" class="form-label">Part car related</label>
+              <label for="partCarRelated" class="form-label" style="  text-align: left;  font-size: 16px !important;font-weight: bold;">Part car related</label>
               <select class="form-select" id="partRelatedCar" name="part_related_car[]" required multiple
-                      aria-label="Multiple select example">
+                      aria-label="Multiple select example" style="font-size: 16px !important;">
                 <option value="manufacturer">Manufacturer</option>
                 <option value="model">Model</option>
                 <option value="model variant">Model Variant</option>
               </select>
             </div>
             <div class="col-md-6">
-              <label for="partAudio" class="form-label">Part Audio</label>
-              <input type="text" class="form-control" id="partAudio" name="part_audio" placeholder="">
+              <label for="partAudio" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Part Audio</label>
+              <input type="text" class="form-control" id="partAudio" name="part_audio" placeholder="" style="font-size: 16px !important;">
             </div>
             <div class="col-md-6">
-              <label for="partBodyWork" class="form-label">Part Body Work</label>
-              <input type="text" class="form-control" name="part_body_work" id="partBodyWork">
+              <label for="partBodyWork" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Part Body Work</label>
+              <input type="text" class="form-control" name="part_body_work" id="partBodyWork" style="font-size: 16px !important;">
             </div>
 
             <div class="col-md-4">
-              <label for="partExhaust" class="form-label">Part Exhaust</label>
-              <input type="text" class="form-control" name="part_exhaust" id="partExhaust">
+              <label for="partExhaust" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Part Exhaust</label>
+              <input type="text" class="form-control" name="part_exhaust" id="partExhaust" style="font-size: 16px !important;">
             </div>
             <div class="col-md-4">
-              <label for="partExterior" class="form-label">Part Exterior</label>
-              <input type="text" class="form-control" name="part_exterior" id="partExterior">
+              <label for="partExterior" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Part Exterior</label>
+              <input type="text" class="form-control" name="part_exterior" id="partExterior" style="font-size: 16px !important;">
             </div>
             <div class="col-md-4">
-              <label for="partInterior" class="form-label">Part Interior</label>
-              <input type="text" class="form-control" name="part_interior" id="partInterior">
+              <label for="partInterior" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Part Interior</label>
+              <input type="text" class="form-control" name="part_interior" id="partInterior" style="font-size: 16px !important;">
             </div>
 
             <div class="col-md-6">
-              <label for="partLighting" class="form-label">Part Lighting</label>
-              <input type="text" class="form-control" name="part_lighting" id="partLighting">
+              <label for="partLighting" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Part Lighting</label>
+              <input type="text" class="form-control" name="part_lighting" id="partLighting" style="font-size: 16px !important;">
             </div>
 
             <div class="col-md-6">
-              <label for="partOther" class="form-label">Part other</label>
-              <input type="text" class="form-control" name="part_other" id="partOther">
+              <label for="partOther" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Part other</label>
+              <input type="text" class="form-control" name="part_other" id="partOther" style="font-size: 16px !important;">
             </div>
 
             <div class="col-md-12">
-              <label for="partPerformance" class="form-label">Performance</label>
-              <textarea class="form-control" name="part_performance" rows="3" id="partPerformance"></textarea>
+              <label for="partPerformance" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Performance</label>
+              <textarea class="form-control" style="font-size: 16px !important;" name="part_performance" rows="3" id="partPerformance"></textarea>
             </div>
 
             <div class="col-md-12">
-              <label for="partSuspension" class="form-label">Suspension</label>
-              <textarea class="form-control" name="part_suspension" rows="3" id="partSuspension"></textarea>
+              <label for="partSuspension" class="form-label" style="font-size: 16px !important;font-weight: bold;text-align: left;">Suspension</label>
+              <textarea class="form-control" style="font-size: 16px !important;" name="part_suspension" rows="3" id="partSuspension"></textarea>
             </div>
 
             <input type="hidden" name="user_id" value="<?= get_current_user_id(); ?>"/>
@@ -147,6 +168,7 @@
   </div>
 </div>
 
+
 <script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/utils.js?random=' . uniqid(); ?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 <script src="<?= get_home_url() . '/wp-content/themes/divi-child/js/notifications.js?random=' . uniqid(); ?>"></script>
@@ -168,7 +190,7 @@
       formatters: {
         "commands": function (column, row) {
           return `<div class="d-grid gap-2 mb-2">
-                       <a href="/account/?action=parts&edit_part=true&post_id=${row.ID}" class="btn btn-default text-black" data-id="${row.ID}"  data-process="services">
+                       <a href="javascript:void(0)" class="btn btn-default text-black edit_show_modal" data-id="${row.ID}"  data-process="services">
                         Edit
                        </a>
                       <a href='javascript:void(0)' type="button" class="btn btn-default text-black delete_show_modal" data-id="${row.ID}" >
@@ -187,6 +209,55 @@
         $("input[name='delete_post_id']").val(post_id)
 
         // $('.delete-dealerships-modal .modal-body').html(`<p>Do you really want to delete item?</p>`);
+        return false; /* always return false so that when clicked it will not scroll up */
+      })
+    })
+
+    $(document).on("loaded.rs.jquery.bootgrid", function () {
+      partDataTable.find(".edit_show_modal").on("click", function (event) {
+        resetValidateForm();
+        let el = $(this);
+        const currentId = el.attr('data-id');
+        const user_id = $('input[name="user_id"]').val();
+        let ajax = new Ajax(`../wp-admin/admin-ajax.php?action=fetch_part_show&post_id=${currentId}&user_id=${user_id}`);
+        const {
+          post_title,
+          part_model,
+          part_audio,
+          part_body_work,
+          part_related_car,
+          part_suspension,
+          part_exhaust,
+          part_exterior,
+          part_interior,
+          part_lighting,
+          part_other,
+          part_performance
+        } = ajax.showData();
+        $('.modal-title-edit').text('Edit Part')
+        $('input[name="part_name"]').val(post_title);
+        $('input[name="part_model"]').val(part_model);
+        $('input[name="part_audio"]').val(part_audio);
+        $('input[name="part_body_work"]').val(part_body_work);
+        $('input[name="part_exhaust"]').val(part_exhaust);
+        $('input[name="part_exterior"]').val(part_exterior);
+        $('input[name="part_interior"]').val(part_interior);
+        $('input[name="part_lighting"]').val(part_lighting);
+        $('input[name="part_other"]').val(part_other);
+        $('input[name="post_id"]').val(currentId);
+
+        let selectElement = $("#partRelatedCar");
+        selectElement.find('option').each(function () {
+          if (part_related_car.includes($(this).val())) {
+            $(this).prop('selected', true);
+          }
+        });
+
+        $('#partPerformance').append(part_performance);
+        $('#partSuspension').append(part_suspension);
+        $('.btn-edit').text('Update');
+
+        $('#modalAdd').modal('show');
         return false; /* always return false so that when clicked it will not scroll up */
       })
     })

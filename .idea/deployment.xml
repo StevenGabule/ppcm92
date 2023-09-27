@@ -14,11 +14,11 @@
             <excludedPath local="true" path="$PROJECT_DIR$/Divi/core" />
             <excludedPath local="true" path="$PROJECT_DIR$/Divi/common" />
             <excludedPath local="true" path="$PROJECT_DIR$/Divi/cloud" />
-            <excludedPath local="true" path="$PROJECT_DIR$/Divi/css" />
             <excludedPath local="true" path="$PROJECT_DIR$/Divi/et-pagebuilder" />
             <excludedPath local="true" path="$PROJECT_DIR$/Divi/epanel" />
             <excludedPath local="true" path="$PROJECT_DIR$/Divi/lang" />
             <excludedPath local="true" path="$PROJECT_DIR$/Divi/psd" />
+            <excludedPath local="true" path="$PROJECT_DIR$/divi-child/php/cars.php" />
           </excludedPaths>
         </serverdata>
       </paths>
