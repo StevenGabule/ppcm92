@@ -26,9 +26,9 @@
     flex-grow: 3;
 }
 
-.tools button {
-    flex-grow: 1;
-}
+/*.tools button {*/
+/*    flex-grow: 1;*/
+/*}*/
 
 .tools h4 {
     width: 200px;

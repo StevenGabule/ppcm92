@@ -1,10 +1,30 @@
-<link href="<?php echo get_home_url() . '/wp-content/themes/divi-child/tools/bootstrap-5.1.1-dist/css/bootstrap.min.css'; ?>" rel="stylesheet">
-<link href="<?php echo get_home_url() . '/wp-content/themes/divi-child/tools/datatables/datatables.min.css'; ?>" rel="stylesheet">
-<link href="<?php echo get_home_url() . '/wp-content/themes/divi-child/style.css?random='.uniqid(); ?>" rel="stylesheet">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+  <link href="<?php echo get_home_url() . '/wp-content/themes/divi-child/style.css?random='.uniqid(); ?>" rel="stylesheet">
+  <style>
+    #datatable_length {
+      float: left;
+      margin-bottom: 20px;}
+    #datatable_filter {
+      float: right;}
+    .show-add {
+      width: 0 !important;
+      font-size: 16px !important;
+      background: #ffdb00 !important;
+      color: black !important;
+      font-weight: bold !important;
+    }
+    .dataTables_paginate ul.paginate {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
 
 <div class="tools">
   <h1>Cars</h1>
-  <button class="btn btn-primary show-add">Add Car Advert</button>
+  <button class="show-add"> Add Car Advert </button>
 </div>
 
 <br /><br />
@@ -31,12 +51,12 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add New Car Advert</h5>
-        <button type="button" class="close">
+        <h5 class="modal-title" style="font-size: 18px !important; padding-left: 20px">Add New Car Advert</h5>
+        <button type="button" class="close" style="margin-top: -20px !important;  margin-right: 20px !important;">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body " style="font-size: 16px !important;">
       
         <form action="" method="POST" enctype="multipart/form-data" name="cars-form" id="cars-form">
           <div class="form-group">
@@ -267,6 +287,7 @@
 <!-- delete modal -->
 
 <script src="<?php echo get_home_url() . '/wp-content/themes/divi-child/js/utils.js?random='.uniqid(); ?>"></script>
-<script src="<?php echo get_home_url() . '/wp-content/themes/divi-child/tools/bootstrap-5.1.1-dist/js/bootstrap.min.js'; ?>"></script>
-<script src="<?php echo get_home_url() . '/wp-content/themes/divi-child/tools/datatables/datatables.min.js'; ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 <script src="<?php echo get_home_url() . '/wp-content/themes/divi-child/js/cars.js?random='.uniqid(); ?>"></script>
